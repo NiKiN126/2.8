@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import datetime
 
 
 def select(line, humans):
@@ -10,11 +11,7 @@ def select(line, humans):
     count = 0
     print(line)
     print(
-        '| {:^4} | {:^20} | {:^15} | {:^16} |'.format(
-            "№",
-            "Ф.И.О.",
-            "знак зодиака",
-            "Дата рождения"))
+        f'| {"№":^4} | {"Ф.И.О.":^20} | {"знак зодиака":^15} | {"Дата рождения":^16} |')
     print(line)
     for i, num in enumerate(humans, 1):
         if nom == num.get('zodiac', ''):
@@ -24,7 +21,7 @@ def select(line, humans):
                     count,
                     num.get('name', ''),
                     num.get('zodiac', ''),
-                    num.get('birthdate', 0)))
+                    num.get('daytime', 0)))
     print(line)
     if count == 0:
         print('Таких людей нет')
@@ -46,7 +43,7 @@ def table(line, humans):
                 i,
                 num.get('name', ''),
                 num.get('zodiac', ''),
-                num.get('birthdate', 0)
+                num.get('daytime', 0)
             )
         )
     print(line)
@@ -54,13 +51,13 @@ def table(line, humans):
 
 def add(humans):
     """Добавление новых людей"""
-    birthdate = input('Введите дату рождения: ')
+    daytime = input('Введите дату рождения: ')
     zodiac = input('Введите знак зодиака: ')
     name = input('Введите Ф.И.О.: ')
     air = {
         'zodiac': zodiac,
         'name': name,
-        'birthdate': birthdate
+        'daytime': daytime
     }
     humans.append(air)
     if len(humans) > 1:
