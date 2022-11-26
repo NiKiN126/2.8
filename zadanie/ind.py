@@ -56,6 +56,7 @@ def add(humans):
     daytime = input('Введите дату рождения: ')
     zodiac = input('Введите знак зодиака: ')
     name = input('Введите Ф.И.О.: ')
+    date = datetime.datetime.strptime(daytime, '%d/%m/%Y').date()
     air = {
         'zodiac': zodiac,
         'name': name,
@@ -64,7 +65,7 @@ def add(humans):
 
     humans.append(air)
     if len(humans) > 1:
-        humans.sort(key=lambda x: x.get('name', ''))
+        humans.sort(key=lambda x: x.get('daytime', ''))
 
 
 def main():
