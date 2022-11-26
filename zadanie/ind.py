@@ -6,15 +6,16 @@ import datetime
 
 
 def select(line, humans):
-    """Выбор знака зодиака по дате рождения"""
-    nom = input('Введите знак зодиака: ')
+    """Выбор человека по дате рождения"""
+    nom = input('Введите дату рождения: ')
     count = 0
     print(line)
     print(
         f'| {"№":^4} | {"Ф.И.О.":^20} | {"знак зодиака":^15} | {"Дата рождения":^16} |')
     print(line)
+
     for i, num in enumerate(humans, 1):
-        if nom == num.get('zodiac', ''):
+        if nom == num.get('daytime', ''):
             count += 1
             print(
                 '| {:<4} | {:<20} | {:<15} | {:<16} |'.format(
@@ -23,6 +24,7 @@ def select(line, humans):
                     num.get('zodiac', ''),
                     num.get('daytime', 0)))
     print(line)
+
     if count == 0:
         print('Таких людей нет')
 
@@ -59,6 +61,7 @@ def add(humans):
         'name': name,
         'daytime': daytime
     }
+
     humans.append(air)
     if len(humans) > 1:
         humans.sort(key=lambda x: x.get('name', ''))
